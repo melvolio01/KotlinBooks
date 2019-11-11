@@ -1,8 +1,7 @@
 package com.example.kotlinbooks
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
     private var TAG = "MainActivity"
