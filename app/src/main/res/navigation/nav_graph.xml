@@ -21,10 +21,19 @@
         android:id="@+id/searchFragment"
         android:name="com.example.kotlinbooks.SearchFragment"
         android:label="fragment_search"
-        tools:layout="@layout/fragment_search" />
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_searchFragment_to_bookDetail"
+            app:destination="@id/bookDetail" />
+    </fragment>
     <fragment
         android:id="@+id/viewLibraryFragment"
         android:name="com.example.kotlinbooks.ViewLibraryFragment"
         android:label="fragment_view_library"
         tools:layout="@layout/fragment_view_library" />
+    <fragment
+        android:id="@+id/bookDetail"
+        android:name="com.example.kotlinbooks.BookDetail"
+        android:label="fragment_book_detail"
+        tools:layout="@layout/fragment_book_detail" />
 </navigation>
