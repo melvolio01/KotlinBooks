@@ -1,30 +1,27 @@
 package com.example.kotlinbooks
 
 
+import android.app.AlertDialog
+import android.content.DialogInterface
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Toast
-import androidx.annotation.NonNull
-import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import kotlinx.android.synthetic.main.fragment_search.view.*
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.util.*
 
 /**
  * A simple [Fragment] subclass.
  */
 class SearchFragment : Fragment(), BookSearchContract.viewContract {
-
     lateinit var authorText: EditText
     lateinit var titleText: EditText
     lateinit var googleBooksRepository: GoogleBooksRepository
@@ -84,19 +81,29 @@ class SearchFragment : Fragment(), BookSearchContract.viewContract {
         view?.findNavController()?.navigate(R.id.action_searchFragment_to_bookDetail, bundle)
     }
 
-    override fun displayErrorToast() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun displayMiscError() {
+        Toast.makeText(activity, getString(R.string.general_error), Toast.LENGTH_SHORT).show()
     }
 
     override fun displayErrorToast(error: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        Toast.makeText(activity, error, Toast.LENGTH_SHORT).show()
     }
 
     override fun displayBookNotFoundToast() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        Toast.makeText(activity, getString(R.string.book_not_found), Toast.LENGTH_SHORT).show()
     }
 
     override fun displayConnectionError(message: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        val builder = AlertDialog.Builder(activity)
+        builder.setTitle("Request failed")
+        builder.setMessage(message + ". Please check your internet connection.")
+        builder.setPositiveButton(
+            "Go to settings",
+            DialogInterface.OnClickListener { dialogInterface, i ->
+                val settingsIntent = Intent(android.provider.Settings.ACTION_SETTINGS)
+                startActivityForResult(settingsIntent, 0)
+            })
+            .setNegativeButton("OK", null)
+            .show()
     }
 }

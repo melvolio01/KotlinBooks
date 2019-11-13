@@ -7,7 +7,7 @@ interface BookSearchContract {
     interface viewContract {
         fun launchBookDetailsFragment(book: BookItem)
 
-        fun displayErrorToast()
+        fun displayMiscError()
 
         fun displayErrorToast(error: String)
 
@@ -23,5 +23,4 @@ interface BookSearchContract {
 
         fun handleError(error: String)
     }
-
 }
