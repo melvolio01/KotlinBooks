@@ -23,21 +23,12 @@ import java.util.*
 /**
  * A simple [Fragment] subclass.
  */
-class SearchFragment : Fragment(), GoogleBooksRepository.RepositoryCallback {
-    override fun handleResponse(response: Response<RetrofitBook>) {
-        if (response.isSuccessful()) {
-            var bookRes: RetrofitBook = response.body()!!
-            val book = bookRes.items[0]
-        }
-    }
-
-    override fun handleError(message: String) {
-        println("ERROR " + message)
-    }
+class SearchFragment : Fragment(), BookSearchContract.viewContract {
 
     lateinit var authorText: EditText
     lateinit var titleText: EditText
     lateinit var googleBooksRepository: GoogleBooksRepository
+    lateinit var bookSearchPresenter: BookSearchPresenter
 
     private var TAG = "SearchFragment"
     private lateinit var bookFinderAPI: BookFinderAPI
@@ -48,7 +39,6 @@ class SearchFragment : Fragment(), GoogleBooksRepository.RepositoryCallback {
     ): View? {
         // Inflate the layout for this fragment
         val rootView = inflater.inflate(R.layout.fragment_search, container, false)
-        authorText = rootView.editAuthor
         titleText = rootView.editTitle
 
         // Retrofit search, with logging interceptor
@@ -67,6 +57,7 @@ class SearchFragment : Fragment(), GoogleBooksRepository.RepositoryCallback {
 
         bookFinderAPI = retrofit.create(BookFinderAPI::class.java)
         googleBooksRepository = GoogleBooksRepository(bookFinderAPI)
+        bookSearchPresenter = BookSearchPresenter(googleBooksRepository, this)
 
         rootView.searchBooksBtn.setOnClickListener { searchBooks() }
 
@@ -74,20 +65,36 @@ class SearchFragment : Fragment(), GoogleBooksRepository.RepositoryCallback {
     }
 
     private fun searchBooks() {
-        val author = authorText.text.toString()
-        val title = "=" + titleText.text.toString()
-        if (author == "" && title == "") {
+        var title = titleText.text.toString()
+        if (title == "") {
             Toast.makeText(
                 activity, "Please enter an author name or title",
                 Toast.LENGTH_SHORT
             ).show()
         } else {
-            val bundle = bundleOf("author" to author, "title" to title)
-            view?.findNavController()?.navigate(R.id.action_searchFragment_to_bookDetail, bundle)
-            authorText.setText("")
+            title = "=$title"
             titleText.setText("")
-
-            googleBooksRepository.searchBooks(title, this)
+            bookSearchPresenter.makeGoogleBooksRequest(title)
         }
+    }
+
+    override fun launchBookDetailsFragment(book: RetrofitBook) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun displayErrorToast() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun displayErrorToast(error: String) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun displayBookNotFoundToast() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun displayConnectionError(message: String) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }

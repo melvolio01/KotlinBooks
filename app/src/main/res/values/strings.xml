@@ -3,4 +3,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="search_books">Search Books</string>
     <string name="view_books">View your Books</string>
+    <string name="title">Title</string>
+    <string name="search">Search</string>
 </resources>
