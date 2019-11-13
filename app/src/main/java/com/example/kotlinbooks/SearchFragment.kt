@@ -2,11 +2,13 @@ package com.example.kotlinbooks
 
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Toast
+import androidx.annotation.NonNull
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
@@ -16,13 +18,17 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.*
 
 /**
  * A simple [Fragment] subclass.
  */
 class SearchFragment : Fragment(), GoogleBooksRepository.RepositoryCallback {
     override fun handleResponse(response: Response<RetrofitBook>) {
-        println("RESPONSE FROM GOOGLE BOOKS: " + response)
+        if (response.isSuccessful()) {
+            var bookRes: RetrofitBook = response.body()!!
+            val book = bookRes.items[0]
+        }
     }
 
     override fun handleError(message: String) {
@@ -54,9 +60,9 @@ class SearchFragment : Fragment(), GoogleBooksRepository.RepositoryCallback {
             .build()
 
         val retrofit = Retrofit.Builder()
+            .client(okHttpClient)
             .baseUrl("https://www.googleapis.com/books/v1/")
             .addConverterFactory(GsonConverterFactory.create())
-            .client(okHttpClient)
             .build()
 
         bookFinderAPI = retrofit.create(BookFinderAPI::class.java)

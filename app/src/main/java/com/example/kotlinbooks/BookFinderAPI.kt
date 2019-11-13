@@ -8,7 +8,8 @@ interface BookFinderAPI {
     @GET("volumes")
     fun getBook(
         @Query("q") bookTitle: String,
-        @Query("key") key: String = BuildConfig.GOOGLE_BOOKS_KEY
+        @Query("key") key: String = BuildConfig.GOOGLE_BOOKS_KEY,
+        @Query("maxResults") maxResults: Int = 1
     ):
             Call<RetrofitBook>
 }

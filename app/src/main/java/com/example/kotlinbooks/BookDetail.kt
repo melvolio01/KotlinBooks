@@ -20,5 +20,4 @@ class BookDetail : Fragment() {
         return inflater.inflate(R.layout.fragment_book_detail, container, false)
     }
 
-
 }

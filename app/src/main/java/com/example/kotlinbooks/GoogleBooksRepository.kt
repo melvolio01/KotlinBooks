@@ -1,6 +1,5 @@
 package com.example.kotlinbooks
 
-import android.util.Log
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -30,7 +29,6 @@ class GoogleBooksRepository(bookFinderAPI: BookFinderAPI) {
             }
         })
     }
-
 
     interface RepositoryCallback {
         fun handleResponse(response: Response<RetrofitBook>)
