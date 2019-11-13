@@ -3,9 +3,22 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">#7f8fa6</item>
+        <item name="colorPrimaryDark">#718093</item>
+        <item name="colorAccent">#c23616</item>
+    </style>
+
+    <style name="TitleText">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/chainGangGrey</item>
+        <item name="android:fontFamily">@font/fjalla_one</item>
+    </style>
+    <style name="DetailText">
+        <item name="android:textSize">16sp</item>
+        <item name="android:padding">@dimen/standard_margin</item>
+        <item name="android:textColor">@color/mazarineBlue</item>
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:lineSpacingMultiplier">1.2</item>
     </style>
 
 </resources>

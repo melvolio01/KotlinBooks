@@ -25,18 +25,8 @@ data class BookItem (
     var id: String? = "id",
 
     @SerializedName("volumeInfo")
-    var volumeInfo: VolumeInfo? = VolumeInfo(),
+    var volumeInfo: VolumeInfo? = VolumeInfo()
 
-    @SerializedName("imageLinks")
-    var imageLinks: ImageLinks? = ImageLinks()
-) : Parcelable
-
-@Parcelize
-data class ImageLinks  (
-    @SerializedName("smallThumbnail")
-    var smallThumbnail: String? = "smallThumbnail",
-    @SerializedName("thumbnail")
-    var thumbnail: String? = "thumbnail"
 ) : Parcelable
 
 @Parcelize
@@ -48,17 +38,28 @@ data class VolumeInfo (
     var authors: Array<String?> = emptyArray(),
 
     @SerializedName("publisher")
-    var publisher: String? = "Random Publishing House",
+    var publisher: String? = "Not Available",
 
     @SerializedName("publishedDate")
-    var publishedDate: String? = "1999",
+    var publishedDate: String? = "Not available",
 
     @SerializedName("pageCount")
-    var pageCount: Int? = 340,
+    var pageCount: Int? = 0,
 
     @SerializedName("averageRating")
-    var averageRating: Double? = 2.2,
+    var averageRating: Double? = 0.0,
 
     @SerializedName("ratingsCount")
-    var ratingsCount: Int? = 47
+    var ratingsCount: Int? = 0,
+
+    @SerializedName("imageLinks")
+    var imageLinks: ImageLinks? = ImageLinks()
+) : Parcelable
+
+@Parcelize
+data class ImageLinks  (
+    @SerializedName("smallThumbnail")
+    var smallThumbnail: String? = "smallThumbnail",
+    @SerializedName("thumbnail")
+    var thumbnail: String? = "thumbnail"
 ) : Parcelable
