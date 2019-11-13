@@ -33,7 +33,7 @@
         tools:layout="@layout/fragment_view_library" />
     <fragment
         android:id="@+id/bookDetail"
-        android:name="com.example.kotlinbooks.BookDetail"
+        android:name="com.example.kotlinbooks.BookDetailFragment"
         android:label="fragment_book_detail"
         tools:layout="@layout/fragment_book_detail" />
 </navigation>

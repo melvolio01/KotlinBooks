@@ -72,14 +72,16 @@ class SearchFragment : Fragment(), BookSearchContract.viewContract {
                 Toast.LENGTH_SHORT
             ).show()
         } else {
-            title = "=$title"
             titleText.setText("")
+            title = "=$title"
             bookSearchPresenter.makeGoogleBooksRequest(title)
         }
     }
 
-    override fun launchBookDetailsFragment(book: RetrofitBook) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun launchBookDetailsFragment(book: BookItem) {
+        var bundle = Bundle()
+        bundle.putParcelable("book", book)
+        view?.findNavController()?.navigate(R.id.action_searchFragment_to_bookDetail, bundle)
     }
 
     override fun displayErrorToast() {

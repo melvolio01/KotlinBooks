@@ -31,6 +31,10 @@ android {
     defaultConfig {
         buildConfigField("String", "GOOGLE_BOOKS_KEY", apikeyProperties['GOOGLE_BOOKS_KEY'])
     }
+
+    androidExtensions {
+        experimental = true
+    }
 }
 
 dependencies {

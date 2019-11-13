@@ -2,10 +2,10 @@ package com.example.kotlinbooks
 
 import retrofit2.Response
 
-public interface BookSearchContract {
+interface BookSearchContract {
 
     interface viewContract {
-        fun launchBookDetailsFragment(book: RetrofitBook)
+        fun launchBookDetailsFragment(book: BookItem)
 
         fun displayErrorToast()
 

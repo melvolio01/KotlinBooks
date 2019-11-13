@@ -26,7 +26,9 @@ class BookSearchPresenter
     override fun handleResponse(response: Response<RetrofitBook>) {
         if (response.isSuccessful()) {
             val bookRes: RetrofitBook = response.body()!!
-            val book = bookRes.items[0]
+            val book = bookRes.items[0]!!
+
+            viewContract.launchBookDetailsFragment(book)
         }
     }
 
