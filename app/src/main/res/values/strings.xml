@@ -8,4 +8,5 @@
     <string name="book_not_found">No book of that name found.</string>
     <string name="general_error">Oops, something went wrong...</string>
     <string name="add_book">Add to Favourites</string>
+    <string name="show_details">Details</string>
 </resources>

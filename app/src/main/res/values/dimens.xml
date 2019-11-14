@@ -3,4 +3,5 @@
     <dimen name="standard_margin">8dp</dimen>
     <dimen name="large_margin">16dp</dimen>
     <dimen name="thumbnail_height">200dp</dimen>
+    <dimen name="small_thumbnail_height">100dp</dimen>
 </resources>
