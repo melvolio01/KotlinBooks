@@ -3,11 +3,12 @@ package com.example.kotlinbooks
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.fragment_book_detail.view.*
 
@@ -17,30 +18,60 @@ import kotlinx.android.synthetic.main.fragment_book_detail.view.*
 class BookDetailFragment : Fragment() {
     var TAG = "BookDetailFragment"
     lateinit var thumbnailView: ImageView
+    lateinit var rootView: View
+    var id: String = ""
+    var title: String = ""
+    var leadAuthor: String = ""
+    var publisher: String = ""
+    var publishedIn: String = ""
+    var pageCount: Int = 0
+    var averageRating: Double = 0.0
+    var totalRatings: Int = 0
+    var description: String = ""
+    var smallThumbNail: String = ""
+    var thumbNail: String = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val rootView = inflater.inflate(R.layout.fragment_book_detail, container, false)
-        val  book = arguments?.getParcelable<BookItem>("book")
-        val title = book?.volumeInfo?.title
-        val firstAuthor = book?.volumeInfo?.authors?.firstOrNull()
-        val publisher = book?.volumeInfo?.publisher
-        val publishedIn = book?.volumeInfo?.publishedDate
-        val pageCount = book?.volumeInfo?.pageCount
-        val averageRating = book?.volumeInfo?.averageRating
-        val totalRatings = book?.volumeInfo?.ratingsCount
-        val description = book?.volumeInfo?.description
-        var smallThumbNail = book?.volumeInfo?.imageLinks?.smallThumbnail
-        // handle glide request
-        val imageUrl = book?.volumeInfo?.imageLinks?.thumbnail
+        rootView = inflater.inflate(R.layout.fragment_book_detail, container, false)
+        val book = arguments?.getParcelable<BookItem>("book")
+        populateDetailViews(book)
+
+        rootView.addBook.setOnClickListener {
+            saveBook(book)
+        }
+
+        return rootView
+    }
+
+    fun loadImage(imageUrl: String?) {
         thumbnailView = rootView.thumbnailView
-        loadImage(imageUrl)
+        Glide
+            .with(this)
+            .load(imageUrl)
+            .into(thumbnailView)
+    }
+
+    fun populateDetailViews(book: BookItem?) {
+        val thumbnail = book?.volumeInfo?.imageLinks?.thumbnail
+        loadImage(thumbnail)
+
+        id = book?.id.toString()
+        title = book?.volumeInfo?.title.toString()
+        leadAuthor = book?.volumeInfo?.authors?.firstOrNull().toString()
+        publisher = book?.volumeInfo?.publisher.toString()
+        publishedIn = book?.volumeInfo?.publishedDate.toString()
+        pageCount = book?.volumeInfo?.pageCount!!.toInt()
+        averageRating = book?.volumeInfo?.averageRating!!.toDouble()
+        totalRatings = book?.volumeInfo?.ratingsCount!!.toInt()
+        description = book?.volumeInfo?.description.toString()
+        smallThumbNail = book?.volumeInfo?.imageLinks?.smallThumbnail.toString()
 
         // create bookDetail string
-        val bookDetail = "Author: $firstAuthor " +
+        val bookDetail = "Author: $leadAuthor " +
                 "\nPublisher: $publisher" + "\nDate of Publication: $publishedIn" +
                 "\nPage Count: $pageCount" +
                 "\nAverage Rating: $averageRating" +
@@ -48,15 +79,15 @@ class BookDetailFragment : Fragment() {
                 "\nDescription: $description"
         rootView.bookDetailsView.setText(bookDetail)
         rootView.titleView.setText(title)
-        return rootView
     }
 
-    fun loadImage(imageUrl: String?) {
-            Glide
-                .with(this)
-                .load(imageUrl)
-                .into(thumbnailView)
+    fun saveBook(book: BookItem?) {
+        Log.i(TAG, "Book: " + title + ", id: " + book?.id)
+        val roomBook = RoomBook(
+            id, title, leadAuthor, publisher, publishedIn, pageCount,
+            averageRating, totalRatings, thumbNail, smallThumbNail, description
+        )
+        val bookViewModel: BookViewModel = ViewModelProvider(this).get(BookViewModel::class.java)
+        bookViewModel.insert(roomBook)
     }
-
-
 }

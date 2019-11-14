@@ -6,6 +6,9 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "book_table")
 class RoomBook(
+    @PrimaryKey
+    var id: String,
+
     @NonNull
     var title: String,
 
@@ -27,7 +30,4 @@ class RoomBook(
     var smallThumbnail: String,
 
     var description: String
-) {
-    @PrimaryKey(autoGenerate = true)
-    var id: Int = 0
-}
+)

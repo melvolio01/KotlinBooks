@@ -6,7 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 
-class BookViewModel(application: Application): AndroidViewModel(application) {
+class BookViewModel(application: Application) : AndroidViewModel(application) {
     // viewModel maintains reference to repository to get data
     private val repository: BookRoomRepository
     val allBooks: LiveData<List<RoomBook>>
