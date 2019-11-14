@@ -52,7 +52,6 @@ class BookDetailFragment : Fragment() {
     }
 
     fun loadImage(imageUrl: String?) {
-        Log.i(TAG, imageUrl)
             Glide
                 .with(this)
                 .load(imageUrl)

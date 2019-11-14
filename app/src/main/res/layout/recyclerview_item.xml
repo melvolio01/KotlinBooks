@@ -18,33 +18,35 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/titleView"
-                style="@style/TitleText"
+                android:id="@+id/libraryTitleView"
+                style="@style/RecyclerItemText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/title"
+                android:scrollHorizontally="false"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.1"
-                app:layout_constraintStart_toEndOf="@+id/thumbnailView"
+                app:layout_constraintStart_toEndOf="@+id/libraryThumbnailView"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.100000024" />
 
             <ImageView
-                android:id="@+id/thumbnailView"
+                android:id="@+id/libraryThumbnailView"
                 android:layout_width="@dimen/small_thumbnail_height"
                 android:layout_height="@dimen/small_thumbnail_height"
                 android:layout_margin="@dimen/standard_margin"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.05"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.100000024" />
 
             <Button
-                android:id="@+id/addBook"
-                style="@style/ButtonStyle"
+                android:id="@+id/detailsBtn"
+                style="@style/ReyclerButtonStyle"
+                android:padding="0dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/standard_margin"
@@ -53,8 +55,6 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toEndOf="@+id/thumbnailView"
-                app:layout_constraintTop_toBottomOf="@+id/titleView"
                 app:layout_constraintVertical_bias="0.0" />
 
 

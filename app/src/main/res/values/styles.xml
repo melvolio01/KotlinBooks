@@ -13,6 +13,12 @@
         <item name="android:textColor">@color/blueNights</item>
         <item name="android:fontFamily">@font/adamina</item>
     </style>
+    <style name="RecyclerItemText">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/blueNights</item>
+        <item name="android:fontFamily">@font/adamina</item>
+    </style>
+
     <style name="DetailText">
         <item name="android:textSize">14sp</item>
         <item name="android:padding">@dimen/standard_margin</item>
@@ -23,13 +29,20 @@
     <style name="ButtonStyle">
         <item name="android:textSize">14sp</item>
         <item name="android:fontFamily">@font/adamina</item>
-        <item name="android:padding">@dimen/large_margin</item>
+        <item name="android:padding">@dimen/standard_margin</item>
         <item name="android:background">@color/lynxWhite</item>
         <item name="android:textColor">@color/harleyDavidsonOrange</item>
     </style>
     <style name="HomeButtonStyle">
         <item name="android:textSize">14sp</item>
         <item name="android:padding">@dimen/standard_margin</item>
+        <item name="android:fontFamily">@font/adamina</item>
+        <item name="android:background">@color/lynxWhite</item>
+        <item name="android:textColor">@color/harleyDavidsonOrange</item>
+    </style>
+    <style name="ReyclerButtonStyle">
+        <item name="android:textSize">14sp</item>
+        <item name="android:padding">0dp</item>
         <item name="android:fontFamily">@font/adamina</item>
         <item name="android:background">@color/lynxWhite</item>
         <item name="android:textColor">@color/harleyDavidsonOrange</item>

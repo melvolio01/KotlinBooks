@@ -24,7 +24,9 @@ class RoomBook(
 
     var thumbnail: String,
 
-    var smallThumbnail: String
+    var smallThumbnail: String,
+
+    var description: String
 ) {
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0

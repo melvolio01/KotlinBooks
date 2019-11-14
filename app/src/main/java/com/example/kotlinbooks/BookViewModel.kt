@@ -12,7 +12,7 @@ class BookViewModel(application: Application): AndroidViewModel(application) {
     val allBooks: LiveData<List<RoomBook>>
 
     init {
-        val bookDao = BookRoomDatabase.getDatabase(application).bookDao()
+        val bookDao = BookRoomDatabase.getDatabase(application, viewModelScope).bookDao()
         repository = BookRoomRepository(bookDao)
         allBooks = repository.allBooks
     }
