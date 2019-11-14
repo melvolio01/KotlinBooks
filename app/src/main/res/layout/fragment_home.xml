@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/riolibrary"
+    android:alpha="0.8"
     tools:context=".HomeFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -13,23 +14,44 @@
 
         <Button
             android:id="@+id/searchBtn"
+            style="@style/HomeButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:alpha="1.0"
             android:text="@string/search_books"
-            app:layout_constraintBottom_toTopOf="@+id/viewBtn"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textAllCaps="false"
+            app:layout_constraintBaseline_toBaselineOf="@+id/viewBtn"
+            app:layout_constraintStart_toEndOf="@+id/viewBtn" />
 
         <Button
             android:id="@+id/viewBtn"
+            style="@style/HomeButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:alpha="1.0"
             android:text="@string/view_books"
+            android:textAllCaps="false"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/searchBtn" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.8" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:alpha="1.0"
+            android:background="@color/lynxWhite"
+            android:fontFamily="@font/adamina"
+            android:padding="@dimen/large_margin"
+            android:text="@string/app_name"
+            style="@style/TitleText"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.785"
+            tools:layout_editor_absoluteX="0dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

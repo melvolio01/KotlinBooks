@@ -32,6 +32,8 @@ class BookDetailFragment : Fragment() {
         val pageCount = book?.volumeInfo?.pageCount
         val averageRating = book?.volumeInfo?.averageRating
         val totalRatings = book?.volumeInfo?.ratingsCount
+        val description = book?.volumeInfo?.description
+        var smallThumbNail = book?.volumeInfo?.imageLinks?.smallThumbnail
         // handle glide request
         val imageUrl = book?.volumeInfo?.imageLinks?.thumbnail
         thumbnailView = rootView.thumbnailView
@@ -42,11 +44,10 @@ class BookDetailFragment : Fragment() {
                 "\nPublisher: $publisher" + "\nDate of Publication: $publishedIn" +
                 "\nPage Count: $pageCount" +
                 "\nAverage Rating: $averageRating" +
-                "\nNumber of Ratings: $totalRatings"
+                "\nNumber of Ratings: $totalRatings" +
+                "\nDescription: $description"
         rootView.bookDetailsView.setText(bookDetail)
         rootView.titleView.setText(title)
-
-
         return rootView
     }
 

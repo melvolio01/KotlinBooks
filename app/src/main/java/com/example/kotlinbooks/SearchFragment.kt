@@ -65,7 +65,7 @@ class SearchFragment : Fragment(), BookSearchContract.viewContract {
         var title = titleText.text.toString()
         if (title == "") {
             Toast.makeText(
-                activity, "Please enter an author name or title",
+                activity, "Please enter a title to search for",
                 Toast.LENGTH_SHORT
             ).show()
         } else {
@@ -76,7 +76,7 @@ class SearchFragment : Fragment(), BookSearchContract.viewContract {
     }
 
     override fun launchBookDetailsFragment(book: BookItem) {
-        var bundle = Bundle()
+        val bundle = Bundle()
         bundle.putParcelable("book", book)
         view?.findNavController()?.navigate(R.id.action_searchFragment_to_bookDetail, bundle)
     }

@@ -52,6 +52,9 @@ data class VolumeInfo (
     @SerializedName("ratingsCount")
     var ratingsCount: Int? = 0,
 
+    @SerializedName("description")
+    var description: String? = "Not available",
+
     @SerializedName("imageLinks")
     var imageLinks: ImageLinks? = ImageLinks()
 ) : Parcelable
