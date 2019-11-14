@@ -90,7 +90,6 @@ class BookDetailFragment : Fragment() {
         )
         val bookViewModel: BookViewModel =
             ViewModelProvider(this).get(BookViewModel::class.java)
-        Log.i(TAG, "BOOK TO BE ADDED: " + roomBook.toString())
         bookViewModel.insert(roomBook)
         Toast.makeText(requireContext(), "$title " + getString(R.string.book_added),
             Toast.LENGTH_SHORT).show()
