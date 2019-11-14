@@ -1,23 +1,26 @@
 package com.example.kotlinbooks
 
-import android.app.Activity
 import android.content.Context
+import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import okhttp3.internal.notify
 
 class BookListAdapter internal constructor(
-    context: Context
+    context: Context, navController: NavController
 ) : RecyclerView.Adapter<BookListAdapter.BookViewHolder>() {
 
     private val inflater: LayoutInflater = LayoutInflater.from(context)
     private var books = emptyList<RoomBook>()
+    private val TAG = "BookListAdapter"
+    private val navController = navController
 
     class BookViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val bookTitleView: TextView = itemView.findViewById(R.id.libraryTitleView)
@@ -41,6 +44,11 @@ class BookListAdapter internal constructor(
             .with(holder.smallThumbnailView.context)
             .load(current.smallThumbnail)
             .into(holder.smallThumbnailView)
+        holder.detailsBtn.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putParcelable("book", current)
+            navController.navigate(R.id.action_viewLibraryFragment_to_libraryDetailFragment, bundle)
+        }
     }
 
     fun setBooks(books: List<RoomBook>) {

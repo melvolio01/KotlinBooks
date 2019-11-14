@@ -9,4 +9,6 @@
     <string name="general_error">Oops, something went wrong...</string>
     <string name="add_book">Add to Favourites</string>
     <string name="show_details">Details</string>
+    <string name="book_added">added to your favourites</string>
+    <string name="remove_book">Remove Book</string>
 </resources>

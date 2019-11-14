@@ -30,10 +30,25 @@
         android:id="@+id/viewLibraryFragment"
         android:name="com.example.kotlinbooks.ViewLibraryFragment"
         android:label="fragment_view_library"
-        tools:layout="@layout/fragment_view_library" />
+        tools:layout="@layout/fragment_view_library" >
+        <action
+            android:id="@+id/action_viewLibraryFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_viewLibraryFragment_to_libraryDetailFragment"
+            app:destination="@id/libraryDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/bookDetail"
         android:name="com.example.kotlinbooks.BookDetailFragment"
         android:label="fragment_book_detail"
-        tools:layout="@layout/fragment_book_detail" />
+        tools:layout="@layout/fragment_book_detail" >
+        <action
+            android:id="@+id/action_bookDetail_to_viewLibraryFragment"
+            app:destination="@id/viewLibraryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/libraryDetailFragment"
+        android:name="com.example.kotlinbooks.LibraryDetailFragment"
+        android:label="LibraryDetailFragment" />
 </navigation>

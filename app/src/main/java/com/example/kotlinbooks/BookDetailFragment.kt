@@ -7,8 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.fragment_book_detail.view.*
 
@@ -41,7 +43,7 @@ class BookDetailFragment : Fragment() {
         populateDetailViews(book)
 
         rootView.addBook.setOnClickListener {
-            saveBook(book)
+            saveBook()
         }
 
         return rootView
@@ -65,10 +67,10 @@ class BookDetailFragment : Fragment() {
         publisher = book?.volumeInfo?.publisher.toString()
         publishedIn = book?.volumeInfo?.publishedDate.toString()
         pageCount = book?.volumeInfo?.pageCount!!.toInt()
-        averageRating = book?.volumeInfo?.averageRating!!.toDouble()
-        totalRatings = book?.volumeInfo?.ratingsCount!!.toInt()
-        description = book?.volumeInfo?.description.toString()
-        smallThumbNail = book?.volumeInfo?.imageLinks?.smallThumbnail.toString()
+        averageRating = book.volumeInfo?.averageRating!!.toDouble()
+        totalRatings = book.volumeInfo?.ratingsCount!!.toInt()
+        description = book.volumeInfo?.description.toString()
+        smallThumbNail = book.volumeInfo?.imageLinks?.smallThumbnail.toString()
 
         // create bookDetail string
         val bookDetail = "Author: $leadAuthor " +
@@ -81,13 +83,17 @@ class BookDetailFragment : Fragment() {
         rootView.titleView.setText(title)
     }
 
-    fun saveBook(book: BookItem?) {
-        Log.i(TAG, "Book: " + title + ", id: " + book?.id)
+    fun saveBook() {
         val roomBook = RoomBook(
             id, title, leadAuthor, publisher, publishedIn, pageCount,
             averageRating, totalRatings, thumbNail, smallThumbNail, description
         )
-        val bookViewModel: BookViewModel = ViewModelProvider(this).get(BookViewModel::class.java)
+        val bookViewModel: BookViewModel =
+            ViewModelProvider(this).get(BookViewModel::class.java)
+        Log.i(TAG, "BOOK TO BE ADDED: " + roomBook.toString())
         bookViewModel.insert(roomBook)
+        Toast.makeText(requireContext(), "$title " + getString(R.string.book_added),
+            Toast.LENGTH_SHORT).show()
+        findNavController().navigate(R.id.action_bookDetail_to_viewLibraryFragment)
     }
 }

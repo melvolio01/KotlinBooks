@@ -24,7 +24,7 @@ public abstract class BookRoomDatabase : RoomDatabase() {
         }
 
         suspend fun populateDatabase(bookDao: BookDao) {
-            bookDao.deleteAll()
+//            bookDao.deleteAll()
             // Sample books
             var book = RoomBook(
                 "uyr8BAAAQBAJ", "1984", "George Orwell", "Arcturus Publishing",

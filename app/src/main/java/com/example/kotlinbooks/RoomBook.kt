@@ -1,10 +1,13 @@
 package com.example.kotlinbooks
 
+import android.os.Parcelable
 import androidx.annotation.NonNull
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import kotlinx.android.parcel.Parcelize
 
 @Entity(tableName = "book_table")
+@Parcelize
 class RoomBook(
     @PrimaryKey
     var id: String,
@@ -30,4 +33,4 @@ class RoomBook(
     var smallThumbnail: String,
 
     var description: String
-)
+): Parcelable
