@@ -8,8 +8,6 @@ import android.os.Bundle
 import android.provider.Settings
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity : AppCompatActivity() {
     private var TAG = "MainActivity"

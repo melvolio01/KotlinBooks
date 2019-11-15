@@ -1,8 +1,6 @@
 package com.example.kotlinbooks
 
-
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -52,7 +50,7 @@ class ViewLibraryFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         bookViewModel.allBooks.observe(viewLifecycleOwner, Observer { books ->
-            books?.let {adapter.setBooks(it)}
+            books?.let { adapter.setBooks(it) }
         })
     }
 }

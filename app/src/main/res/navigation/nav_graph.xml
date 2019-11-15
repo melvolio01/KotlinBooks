@@ -50,5 +50,9 @@
     <fragment
         android:id="@+id/libraryDetailFragment"
         android:name="com.example.kotlinbooks.LibraryDetailFragment"
-        android:label="LibraryDetailFragment" />
+        android:label="LibraryDetailFragment" >
+        <action
+            android:id="@+id/action_libraryDetailFragment_to_viewLibraryFragment"
+            app:destination="@id/viewLibraryFragment" />
+    </fragment>
 </navigation>

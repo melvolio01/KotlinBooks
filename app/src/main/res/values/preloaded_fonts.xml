@@ -2,9 +2,5 @@
 <resources>
     <array name="preloaded_fonts" translatable="false">
         <item>@font/adamina</item>
-        <item>@font/belgrano</item>
-        <item>@font/benchnine</item>
-        <item>@font/fjalla_one</item>
-        <item>@font/roboto</item>
     </array>
 </resources>

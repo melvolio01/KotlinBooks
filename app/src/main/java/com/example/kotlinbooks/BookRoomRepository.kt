@@ -8,4 +8,8 @@ class BookRoomRepository(private val bookDao: BookDao) {
     suspend fun insert(book: RoomBook) {
         bookDao.insert(book)
     }
+
+    suspend fun deleteById(id: String){
+        bookDao.deleteById(id)
+    }
 }

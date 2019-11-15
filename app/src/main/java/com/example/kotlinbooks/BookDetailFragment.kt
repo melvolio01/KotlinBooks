@@ -1,8 +1,6 @@
 package com.example.kotlinbooks
 
-
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -58,15 +56,15 @@ class BookDetailFragment : Fragment() {
     }
 
     fun populateDetailViews(book: BookItem?) {
-        val thumbnail = book?.volumeInfo?.imageLinks?.thumbnail
-        loadImage(thumbnail)
+        thumbNail = book?.volumeInfo?.imageLinks?.thumbnail!!
+        loadImage(thumbNail)
 
-        id = book?.id.toString()
-        title = book?.volumeInfo?.title.toString()
-        leadAuthor = book?.volumeInfo?.authors?.firstOrNull().toString()
-        publisher = book?.volumeInfo?.publisher.toString()
-        publishedIn = book?.volumeInfo?.publishedDate.toString()
-        pageCount = book?.volumeInfo?.pageCount!!.toInt()
+        id = book.id.toString()
+        title = book.volumeInfo?.title.toString()
+        leadAuthor = book.volumeInfo?.authors?.firstOrNull().toString()
+        publisher = book.volumeInfo?.publisher.toString()
+        publishedIn = book.volumeInfo?.publishedDate.toString()
+        pageCount = book.volumeInfo?.pageCount!!.toInt()
         averageRating = book.volumeInfo?.averageRating!!.toDouble()
         totalRatings = book.volumeInfo?.ratingsCount!!.toInt()
         description = book.volumeInfo?.description.toString()
@@ -91,8 +89,10 @@ class BookDetailFragment : Fragment() {
         val bookViewModel: BookViewModel =
             ViewModelProvider(this).get(BookViewModel::class.java)
         bookViewModel.insert(roomBook)
-        Toast.makeText(requireContext(), "$title " + getString(R.string.book_added),
-            Toast.LENGTH_SHORT).show()
+        Toast.makeText(
+            requireContext(), "$title " + getString(R.string.book_added),
+            Toast.LENGTH_SHORT
+        ).show()
         findNavController().navigate(R.id.action_bookDetail_to_viewLibraryFragment)
     }
 }
