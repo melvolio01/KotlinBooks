@@ -9,12 +9,15 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import kotlinx.coroutines.launch
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.fragment_book_detail.view.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers.Main
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.delay
+import kotlin.coroutines.CoroutineContext
 
-/**
- * A simple [Fragment] subclass.
- */
 class BookDetailFragment : Fragment() {
     var TAG = "BookDetailFragment"
     lateinit var thumbnailView: ImageView
@@ -89,10 +92,22 @@ class BookDetailFragment : Fragment() {
         val bookViewModel: BookViewModel =
             ViewModelProvider(this).get(BookViewModel::class.java)
         bookViewModel.insert(roomBook)
+
+        CoroutineScope(Main).launch {
+            showToast()
+            delay(1000)
+            navigateToViewLibrary()
+        }
+    }
+
+    fun showToast() {
         Toast.makeText(
             requireContext(), "$title " + getString(R.string.book_added),
             Toast.LENGTH_SHORT
         ).show()
+    }
+
+    fun navigateToViewLibrary() {
         findNavController().navigate(R.id.action_bookDetail_to_viewLibraryFragment)
     }
 }

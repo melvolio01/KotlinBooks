@@ -6,15 +6,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.fragment_library_detail.view.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
-/**
- * A simple [Fragment] subclass.
- */
 class LibraryDetailFragment : Fragment() {
     val TAG = "LibraryDetailFragment"
     lateinit var book: RoomBook
@@ -86,8 +88,19 @@ class LibraryDetailFragment : Fragment() {
             ViewModelProvider(this).get(BookViewModel::class.java)
         bookViewModel.deleteById(id)
 
-        Toast.makeText(requireContext(), "$title deleted successfully", Toast.LENGTH_SHORT).show()
-        findNavController().navigate(R.id.action_libraryDetailFragment_to_viewLibraryFragment)
+        CoroutineScope(Dispatchers.Main).launch {
+            showToast()
+            delay(1000)
+            navigateToCollection()
+        }
     }
 
+    fun showToast() {
+        Toast.makeText(requireContext(),
+            "$title deleted successfully", Toast.LENGTH_SHORT).show()
+    }
+
+    fun navigateToCollection() {
+        findNavController().navigate(R.id.action_libraryDetailFragment_to_viewLibraryFragment)
+    }
 }
