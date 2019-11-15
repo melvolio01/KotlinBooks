@@ -1,4 +1,4 @@
-package com.example.kotlinbooks
+package com.example.kotlinbooks.Fragments
 
 import android.app.AlertDialog
 import android.content.DialogInterface
@@ -11,6 +11,12 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
+import com.example.kotlinbooks.*
+import com.example.kotlinbooks.Interfaces.BookFinderAPI
+import com.example.kotlinbooks.Interfaces.BookSearchContract
+import com.example.kotlinbooks.Models.BookItem
+import com.example.kotlinbooks.Presenters.BookSearchPresenter
+import com.example.kotlinbooks.Repositories.GoogleBooksRepository
 import kotlinx.android.synthetic.main.fragment_search.view.*
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -52,8 +58,10 @@ class SearchFragment : Fragment(), BookSearchContract.viewContract {
             .build()
 
         bookFinderAPI = retrofit.create(BookFinderAPI::class.java)
-        googleBooksRepository = GoogleBooksRepository(bookFinderAPI)
-        bookSearchPresenter = BookSearchPresenter(googleBooksRepository, this)
+        googleBooksRepository =
+            GoogleBooksRepository(bookFinderAPI)
+        bookSearchPresenter =
+            BookSearchPresenter(googleBooksRepository, this)
 
         rootView.searchBooksBtn.setOnClickListener { searchBooks() }
 

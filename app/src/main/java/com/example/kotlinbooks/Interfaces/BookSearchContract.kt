@@ -1,5 +1,7 @@
-package com.example.kotlinbooks
+package com.example.kotlinbooks.Interfaces
 
+import com.example.kotlinbooks.Models.BookItem
+import com.example.kotlinbooks.Models.RetrofitBook
 import retrofit2.Response
 
 interface BookSearchContract {

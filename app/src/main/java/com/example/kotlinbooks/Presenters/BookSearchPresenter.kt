@@ -1,6 +1,9 @@
-package com.example.kotlinbooks
+package com.example.kotlinbooks.Presenters
 
 import android.util.Log
+import com.example.kotlinbooks.Interfaces.BookSearchContract
+import com.example.kotlinbooks.Models.RetrofitBook
+import com.example.kotlinbooks.Repositories.GoogleBooksRepository
 import retrofit2.Response
 
 class BookSearchPresenter

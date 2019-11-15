@@ -1,5 +1,7 @@
-package com.example.kotlinbooks
+package com.example.kotlinbooks.Interfaces
 
+import com.example.kotlinbooks.BuildConfig
+import com.example.kotlinbooks.Models.RetrofitBook
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query

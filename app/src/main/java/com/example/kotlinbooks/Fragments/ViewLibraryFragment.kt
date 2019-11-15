@@ -1,4 +1,4 @@
-package com.example.kotlinbooks
+package com.example.kotlinbooks.Fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,6 +13,9 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.kotlinbooks.Adapters.BookListAdapter
+import com.example.kotlinbooks.ViewModels.BookViewModel
+import com.example.kotlinbooks.R
 
 /**
  * A simple [Fragment] subclass.
@@ -45,7 +48,8 @@ class ViewLibraryFragment : Fragment() {
         bookViewModel = ViewModelProvider(this).get(BookViewModel::class.java)
         val recyclerView = rootView.findViewById<RecyclerView>(R.id.recyclerView)
         val navController: NavController = view?.findNavController()!!
-        val adapter = BookListAdapter(requireContext(), navController)
+        val adapter =
+            BookListAdapter(requireContext(), navController)
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 

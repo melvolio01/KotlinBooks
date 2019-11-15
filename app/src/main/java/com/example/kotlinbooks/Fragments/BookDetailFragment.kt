@@ -1,4 +1,4 @@
-package com.example.kotlinbooks
+package com.example.kotlinbooks.Fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,12 +11,14 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import kotlinx.coroutines.launch
 import com.bumptech.glide.Glide
+import com.example.kotlinbooks.Models.BookItem
+import com.example.kotlinbooks.ViewModels.BookViewModel
+import com.example.kotlinbooks.R
+import com.example.kotlinbooks.Models.RoomBook
 import kotlinx.android.synthetic.main.fragment_book_detail.view.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.Main
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
-import kotlin.coroutines.CoroutineContext
 
 class BookDetailFragment : Fragment() {
     var TAG = "BookDetailFragment"

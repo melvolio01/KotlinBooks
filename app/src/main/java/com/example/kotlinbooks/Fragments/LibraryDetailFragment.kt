@@ -1,4 +1,4 @@
-package com.example.kotlinbooks
+package com.example.kotlinbooks.Fragments
 
 
 import android.os.Bundle
@@ -6,11 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
+import com.example.kotlinbooks.ViewModels.BookViewModel
+import com.example.kotlinbooks.R
+import com.example.kotlinbooks.Models.RoomBook
 import kotlinx.android.synthetic.main.fragment_library_detail.view.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

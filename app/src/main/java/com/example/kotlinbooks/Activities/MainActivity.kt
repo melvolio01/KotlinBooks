@@ -1,4 +1,4 @@
-package com.example.kotlinbooks
+package com.example.kotlinbooks.Activities
 
 import android.content.Context
 import android.content.Intent
@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.provider.Settings
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.example.kotlinbooks.R
 
 class MainActivity : AppCompatActivity() {
     private var TAG = "MainActivity"

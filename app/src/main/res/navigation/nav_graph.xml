@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.kotlinbooks.HomeFragment"
+        android:name="com.example.kotlinbooks.Fragments.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
-        android:name="com.example.kotlinbooks.SearchFragment"
+        android:name="com.example.kotlinbooks.Fragments.SearchFragment"
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" >
         <action
@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/viewLibraryFragment"
-        android:name="com.example.kotlinbooks.ViewLibraryFragment"
+        android:name="com.example.kotlinbooks.Fragments.ViewLibraryFragment"
         android:label="fragment_view_library"
         tools:layout="@layout/fragment_view_library" >
         <action
@@ -40,7 +40,7 @@
     </fragment>
     <fragment
         android:id="@+id/bookDetail"
-        android:name="com.example.kotlinbooks.BookDetailFragment"
+        android:name="com.example.kotlinbooks.Fragments.BookDetailFragment"
         android:label="fragment_book_detail"
         tools:layout="@layout/fragment_book_detail" >
         <action
@@ -49,7 +49,7 @@
     </fragment>
     <fragment
         android:id="@+id/libraryDetailFragment"
-        android:name="com.example.kotlinbooks.LibraryDetailFragment"
+        android:name="com.example.kotlinbooks.Fragments.LibraryDetailFragment"
         android:label="LibraryDetailFragment" >
         <action
             android:id="@+id/action_libraryDetailFragment_to_viewLibraryFragment"

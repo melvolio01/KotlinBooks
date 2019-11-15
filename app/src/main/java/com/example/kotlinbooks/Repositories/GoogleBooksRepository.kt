@@ -1,5 +1,8 @@
-package com.example.kotlinbooks
+package com.example.kotlinbooks.Repositories
 
+import com.example.kotlinbooks.Interfaces.BookFinderAPI
+import com.example.kotlinbooks.BuildConfig
+import com.example.kotlinbooks.Models.RetrofitBook
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
